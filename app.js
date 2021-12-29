@@ -5,6 +5,9 @@ const routes = require('./routers')
 const port = 3001;
 
 
+app.set('view engine', 'ejs')
+app.engine('html', require('ejs').renderFile)
+
 
 app.use(express.static('public'))
 app.use('/', routes);
