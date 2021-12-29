@@ -1,19 +1,17 @@
-var express = require('express')
+const express = require('express');
+const app = express();
+const indexRouter = require('./routers/index');
+const usersRouter = require('./routers/users');
 
-var app = express();
+const port = 3001;
 
-app.use(express.static('public'))
 
-app.listen(3000, function () {
-    console.log("start! express!!! server on 3000")
+
+// app.use(express.static('public'))
+
+app.use('/', indexRouter)
+app.use('/users', usersRouter)
+
+app.listen(port, function () {
+    console.log("start! express!!! server on ", port)
 })
-
-// Get Method
-app.get('/', function (req, res) {
-    res.send("<h1>Hello Nodes~</h1>")
-})
-
-app.get('/main', function (req, res) {
-    res.sendFile(__dirname + "/public/main.html")
-})
-
