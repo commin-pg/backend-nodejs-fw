@@ -18,6 +18,7 @@
   "homepage": "https://github.com/commin-pg/backend-nodejs-fw#readme",
   "dependencies": {
     "ejs": "^3.1.6",
-    "express": "^4.17.2"
+    "express": "^4.17.2",
+    "helmet": "^4.6.0"
   }
 }
