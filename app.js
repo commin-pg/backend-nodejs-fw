@@ -12,6 +12,8 @@ const port = 3001;
 app.use('/', indexRouter)
 app.use('/users', usersRouter)
 
+const routes = require('./routers')
+
 app.listen(port, function () {
     console.log("start! express!!! server on ", port)
 })

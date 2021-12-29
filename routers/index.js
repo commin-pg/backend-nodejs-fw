@@ -1,10 +1,10 @@
-var express = require('express');
-var router = express.Router;
+const express = require('express')
+const router = express.Router
 
-// Get home page
+const main = require('./main.js')
+const user = require('./user.js')
 
-router.get('/', function (req, res, next) {
-    res.render('index', { title: Express })
-})
+router.use('/main', main)
+router.use('/user', user)
 
 module.exports = router;
