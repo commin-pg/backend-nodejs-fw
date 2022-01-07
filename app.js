@@ -39,7 +39,7 @@ app.get('/', function (req, res) {
     console.log("hello node", __dirname);
     // res.send("Hello Node")
     // res.sendFile(__dirname + '/public/main.html')
-    res.render('index', { title: 'this is title', message: 'Hello Pug!!' })
+    res.render('index', { title: 'this is title', message: 'Hello EJS!!' })
 })
 
 app.post('/search_result', function (req, res) {
