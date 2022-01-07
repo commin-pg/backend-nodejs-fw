@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <title>
+        <%= title %>
+    </title>
+</head>
+
+<body>
+    <% for(i=0;i<4;i++){%>
+        <%= message %> <br>
+            <% } %>
+
+
+                <form action="/search_result" method="post" id="search-form" name="search_form">
+                    <input type="text" name="search_input" id="search_input" onkeypress="JavaScript:press(this.form)">
+                    <input type="button" value="찾기" onclick="search(); return false">
+                </form>
+
+                <div id="search-result-list">
+
+                </div>
+
+                <script>
+                    function press(f){
+                        if(f.keyCode === 13){
+                            console.log('aa')
+                            search_form.submit();
+                        }
+                    }
+
+                    function search() {
+                        var formData = $("#search-form").serialize();
+                        $.ajax({
+                            cache: false,
+                            url: "/search_result",
+                            type: 'POST',
+                            data: formData,
+                            success: function (data) {
+                                console.log("result : ", data.datas)
+                                $('#search-result-list').empty();
+                                if (data.datas && data.datas.length >= 1) {
+                                    $.each(data.datas, function (index, value) {
+                                        console.log(value)
+                                        $('#search-result-list').append($('<li>' + index + ' - ' + value.name + '(' + value.email + ')' + '</li>'));
+                                    });
+                                } else {
+                                    $('#search-result-list').append($('<p> 검색결과가 없습니다. </p>'));
+                                }
+                            },
+                            error: function (xhr, status) {
+                                alert(xhr + ":" + status)
+                            }
+                        })
+                    }
+                </script>
+
+</body>
+
+</html>
