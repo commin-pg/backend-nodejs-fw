@@ -7,7 +7,7 @@ function delay() {
 
 function delay2() {
     var total = 0;
-    for (var i = 0; i < 10000000000; i++) {
+    for (var i = 0; i < 10000000000000; i++) {
         // total += i;
         continue;
     }
@@ -45,7 +45,7 @@ function dev() {
 }
 
 setTimeout(() => { kim() }, 100) // event queue 1 ==> event loop ==> libuv ==> thread pool ==> work thread (0.1초 후에 콜백 실행) ==> event loop ==> stack 으로
-setTimeout(() => { kim2() }, 50) // event queue 2 ==> event loop ==> libuv ==> thread pool ==> work thread (0.05초 후에 콜백 실행) ==> event loop ==> stack 으로
+setTimeout(() => { kim2() }, 5) // event queue 2 ==> event loop ==> libuv ==> thread pool ==> work thread (0.005초 후에 콜백 실행) ==> event loop ==> stack 으로
 lee(); // stack 1
 hong(); //  stack 2
 jung(); //  stack 3
