@@ -13,13 +13,13 @@ app.listen(3002,()=>{
 
 
 function delay_create_file(callback) {
-    var file = 'test1.txt';
+    var file = 'test2.txt';
     fs.open(file,'w',function(err,fd){
         if (err) throw err;
         console.log('File open success')
     })
     str =[];
-    for (var i = 0; i < 1000000; i++) {
+    for (var i = 0; i < 10000; i++) {
             str.push( 'abcdsfksjflksdajfklasdjfkladsjfkldsajfklsadjfkldasjfkljdsaklfjdsaklfjsadkfjdsklafjsdklafjdsalkfjdlskajfkldsjfkldsjflkdsjafkldsjfkldsjfkldsjfkldsjflksdjfkldsjfkldsjfkldsjfkldsj')
     }
 
@@ -43,7 +43,7 @@ function delay2(callback) {
 
 app.get('/',function(req,res){
     console.log('input')
-    delay2((tot)=>{
+    delay_create_file((tot)=>{
         console.log(tot)
     });
     console.log('success~~')
