@@ -1,3 +1,7 @@
+/*
+ CPU intensive code example
+*/
+
 process.env.UV_THREADPOOL_SIZE = 4; // default 4
 
 const crypto = require('crypto')
