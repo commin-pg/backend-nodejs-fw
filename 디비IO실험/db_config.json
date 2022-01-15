@@ -4,5 +4,5 @@
     "user": "root",
     "password": "khm0813",
     "database": "employees",
-    "connectionLimit" : 5
+    "connectionLimit" : 10
 }

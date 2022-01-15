@@ -7,8 +7,8 @@ function delay() {
 
 function delay2() {
     var total = 0;
-    for (var i = 0; i < 10000000000000; i++) {
-        // total += i;
+    for (var i = 0; i < 10000000000; i++) {
+        //total += i;
         continue;
     }
 
@@ -24,6 +24,12 @@ function kim() {
 function kim2() {
     delay()
     console.log('kim2- ', Date.now() - start)
+
+}
+
+function kim3() {
+    delay()
+    console.log('kim3- ', Date.now() - start)
 
 }
 function lee() {
@@ -43,9 +49,9 @@ function dev() {
     delay2()
     console.log('dev- ', Date.now() - start)
 }
+setImmediate(()=>{kim3()})
+setTimeout(() => { kim() }, 100) // event loop ==> timer (0.1초 후에 콜백 poll 큐로 이동)
 
-setTimeout(() => { kim() }, 100) // event queue 1 ==> event loop ==> libuv ==> thread pool ==> work thread (0.1초 후에 콜백 실행) ==> event loop ==> stack 으로
-setTimeout(() => { kim2() }, 5) // event queue 2 ==> event loop ==> libuv ==> thread pool ==> work thread (0.005초 후에 콜백 실행) ==> event loop ==> stack 으로
 lee(); // stack 1
 hong(); //  stack 2
 jung(); //  stack 3

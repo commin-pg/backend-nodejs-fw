@@ -2,7 +2,7 @@
  CPU intensive code example
 */
 
-process.env.UV_THREADPOOL_SIZE = 26; // default 4
+process.env.UV_THREADPOOL_SIZE = 16; // default 4
 
 const crypto = require('crypto')
 
@@ -64,8 +64,6 @@ crypto.pbkdf2('a', 'b', 100000, 512, 'sha512', () => {
 })
 
 
-
-// 이 맥북의 코어 수는 8코어이며 1코어당 2개의 쓰레드를 동작시키므로 쓰레드풀이 16개 이상이어도 17번째는 16개의 작업이 끝난 후 처리될것이다.
 crypto.pbkdf2('a', 'b', 100000, 512, 'sha512', () => {
     console.log('17:', Date.now() - start)
 })

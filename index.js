@@ -34,7 +34,7 @@ function delay_create_file(callback) {
 
 function delay2(callback) {
     var total = 0;
-    for (var i = 0; i < 10000000000; i++) {
+    for (var i = 0; i < 1000000000000; i++) {
         total +=i;
     }
     callback(total)
@@ -43,7 +43,7 @@ function delay2(callback) {
 
 app.get('/',function(req,res){
     console.log('input')
-    delay_create_file((tot)=>{
+    delay2((tot)=>{
         console.log(tot)
     });
     console.log('success~~')
