@@ -1,0 +1,17 @@
+###
+
+GET http://localhost:3000/boards HTTP/1.1
+
+### 
+GET http://localhost:3000/boards/1 HTTP/1.1
+
+###
+
+Post http://localhost:3000/boards HTTP/1.1
+content-type: application/json
+
+{
+    "title": "sample",
+    "description": "Wed, 21 Oct 2015 18:27:50 GMT",
+    "boardStatus": "PUBLIC"
+}
