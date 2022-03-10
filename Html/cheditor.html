@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+      <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+      <script src='./ckeditor/ckeditor.js'></script>
+</head>
+<body>
+	 <form>
+            <textarea name="editor1" id="editor1" rows="10" cols="80" data-sample-short>
+            </textarea>
+            <script>
+                // Replace the <textarea id="editor1"> with a CKEditor 4
+                // instance, using default configuration.
+                CKEDITOR.replace( 'editor1',{
+                       width: 600,
+                        height: 300,
+                        resize_dir: 'both',
+                        resize_minWidth: 200,
+                        resize_minHeight: 300,
+                        resize_maxWidth: 800,
+                        removeButtons: 'PasteFromWord',
+                        enterMode : CKEDITOR.ENTER_BR,
+                        shiftEnterMode: CKEDITOR.ENTER_P
+                    } );
+            </script>
+            
+        </form>
+
+        <button onclick="submit()">submit</button>
+
+        <script>
+
+            function uuidv4() {
+                return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
+                    (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+                );
+            }
+
+            function create(copyValue){
+                    const t = document.createElement("textarea");
+                    var tmpId = "tmp" + uuidv4();
+                    t.setAttribute("id",tmpId)
+                     
+                    document.body.appendChild(t);
+                    CKEDITOR.replace(tmpId);
+                    CKEDITOR.instances[tmpId].setData(copyValue)
+
+                    t.value = copyValue;
+                    t.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(t);
+            }
+
+            function submit(){
+                var v = '<p>abc</p>'
+                CKEDITOR.instances['editor1'].setData(v)
+                var value = CKEDITOR.instances['editor1'].getData()
+                // var content = $('editor1').val();
+                console.log("aa",value)
+            }
+        </script>
+</body>
+</html>

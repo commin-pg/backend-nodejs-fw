@@ -67,6 +67,7 @@
     "send": "^0.17.2",
     "serve-static": "^1.14.2",
     "setprototypeof": "^1.2.0",
+    "sf": "^0.2.0",
     "sqlstring": "^2.3.1",
     "statuses": "^1.5.0",
     "string_decoder": "^1.1.1",
@@ -76,7 +77,9 @@
     "unpipe": "^1.0.0",
     "util-deprecate": "^1.0.2",
     "utils-merge": "^1.0.1",
-    "vary": "^1.1.2"
+    "vary": "^1.1.2",
+    "vue2-editor": "^2.10.3",
+    "xlsx": "^0.17.5"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

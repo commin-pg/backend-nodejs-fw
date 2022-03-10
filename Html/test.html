@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- jQuery를 사용하기위해 jQuery라이브러리 추가 -->
+    <script
+      type="text/javascript"
+      src="http://code.jquery.com/jquery-1.9.0.min.js"
+    ></script>
+  </head>
+  <body>
+    <div id="div-plain-text-box">
+      <p>
+        안녕하세요<br />
+        모두 반갑습니다<br />
+        이것은 링크입니다<br />
+        <a href="http://naver.com">네이버</a><br />
+        그럼 다시뵙겠습니다.
+        <ul>
+            <li>바보1</li>
+            <li>바보2</li>
+            <li>바보3</li>
+            <li>바보4</li>
+        </ul>
+      </p>
+    </div>
+
+    <button onclick="getPlainTextByCreateElement()">추출</button>
+    
+
+    <div
+      id="div-plain-text"
+      style="border: 1px solid #000; height: 100px; width: 100px"
+    ></div>
+  </body>
+  <script>
+
+    function uuidv4() {
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+            var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+            return v.toString(16);
+        });
+    }
+
+    function getPlainTextByCreateElement(){
+        var uuid = uuidv4();
+
+        var tagText = '<p>안녕하세요<br />모두 반갑습니다<br />모두 반갑습니다<br />이것은 링크입니다<br />이것은 링크입니다<br />이것은 링크입니다<br />이것은 링크입니다<br /><a href="http://naver.com">네이버</a><br /> </p>'
+
+        var newDIV = document.createElement("div");  
+        newDIV.setAttribute('id',uuid);
+        newDIV.innerHTML = tagText
+
+        document.body.appendChild(newDIV);
+        
+        var plainTextEle = document.getElementById(uuid);
+        var plainText = plainTextEle.innerText;
+        document.body.removeChild(newDIV);
+
+        console.log(plainText)
+    }
+
+    function getPlainText() {
+        var text = $('#div-plain-text-box').text();
+        var plainTextEle = document.getElementById("div-plain-text-box");
+        var plainText = plainTextEle.innerText;
+        console.log(text)
+        console.log(plainText)
+    }
+  </script>
+</html>
