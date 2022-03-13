@@ -7,10 +7,12 @@ import {
   Patch,
   Post,
 } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { BoardsService } from './boards.service';
 import { CreateBoardDto } from './dto/create-board.dto';
 import { Board } from './entities/board.entity';
 
+@ApiTags("게시판 API")
 @Controller('boards')
 export class BoardsController {
   constructor(private readonly boardsService: BoardsService) {}
